@@ -1,0 +1,42 @@
+{
+  "name": "cicd-demo-application",
+  "private": true,
+  "version": "1.0.3",
+  "description": "A demo project for displaying CICD as a software process.",
+  "repository": "https://github.com/redmed86/pipeline-demo.git",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "http-server": "^0.9.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "~1.4.0",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "~1.1.0",
+    "karma-sauce-launcher": "1.2.0",
+    "karma-junit-reporter": "^0.4.1",
+    "protractor": "5.1.2",
+    "jshint": "2.9.5"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "update-deps": "npm update",
+    "postupdate-deps": "bower update",
+    "lint": "./node_modules/jshint/bin/jshint app/ --exclude /app/bower_components",
+    "prestart": "npm install",
+    "start": "nodemon server.js",
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js --single-run",
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js",
+    "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0"
+  }
+}
