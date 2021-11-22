@@ -10,5 +10,8 @@ describe('My Login application', () => {
         await expect($('#flash')).toHaveTextContaining(
             'You logged into a secure area!');
     });
+
+
+    //Adding comements to show how a change in git works
 });
 
